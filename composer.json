@@ -1,5 +1,5 @@
 {
-    "name": "src/naciri-geolocator",
+    "name": "naciri/geolocator",
     "description": "geolocation module through google maps api",
     "type": "library",
     "authors": [
