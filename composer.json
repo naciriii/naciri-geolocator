@@ -22,8 +22,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Naciri\\Geolocator\\Tests\\": "tests"
+             "Naciri\\Geolocator\\Test\\": "tests"
         }
+    },
+    "scripts": {
+        "phpunit": "./vendor/bin/phpunit --testdox"
     }
 
 }

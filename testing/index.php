@@ -5,6 +5,9 @@ include ("../vendor/autoload.php");
 use Naciri\Geolocator\Geolocator;
 
 $g = new Geolocator(new GuzzleHttp\Client);
-
-$d = $g->getAddressFromCoords(33.886917, 9.537499);
+try {
+$d = $g->getAddressFromCoords("hello", 9.537499);
+} catch(Exception $e) {
+	var_dump($e);
+}
 var_dump($d);
