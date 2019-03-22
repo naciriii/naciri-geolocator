@@ -28,7 +28,7 @@ class Geolocator
         $this->client = $client;
         /** @var string get google api token from config file */
       
-        $this->googleApiToken = getenv("API_TOKEN");
+        $this->googleApiToken = config("API_TOKEN");
         
     }
 

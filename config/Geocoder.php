@@ -1,7 +1,7 @@
 <?php
 const CONFIG = [
 
-"API_TOKEN" => "AIzaSyDRHqQl5jVDSwvGp1d569VAbeHA8PIhEF8"
+"API_TOKEN" => "YOUR-GOOGLE-API-TOKEN"
 
 
 
@@ -11,6 +11,9 @@ const CONFIG = [
 
 function config($param = null)
 {
+	if(getenv("API_TOKEN")!= null) {
+		return getenv("API_TOKEN");
+	}
 	return CONFIG[$param]?? null;
 }
 
