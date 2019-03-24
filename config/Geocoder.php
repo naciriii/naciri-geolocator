@@ -8,12 +8,15 @@ const CONFIG = [
 
 
 ];
+foreach(CONFIG as $key => $val) {
+	putenv($key.'='.$val);
+}
 
 function config($param = null)
 {
-	if(getenv("API_TOKEN")!= null) {
-		return getenv("API_TOKEN");
+	if(getenv($param)!= false) {
+		return getenv($param);
 	}
-	return CONFIG[$param]?? null;
+	return null;
 }
 
