@@ -9,7 +9,9 @@ const CONFIG = [
 
 ];
 foreach(CONFIG as $key => $val) {
+	if(getenv($key) == false) {
 	putenv($key.'='.$val);
+	}
 }
 
 function config($param = null)
