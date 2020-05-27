@@ -22,7 +22,7 @@ class GeolocatorTest extends TestCase
     }
     public function testGetAddressFromCoords()
     {
-        $this->geolocator->client->method('request')->with("get", $this->istype('string'), $this->arrayHasDeepKey('latlng'))->willReturn($this->getAddressFromCoordsResponse());
+        $this->geolocator->client->method('request')->with("get", $this->istype('string'), $this->anything())->willReturn($this->getAddressFromCoordsResponse());
 
         $result = $this->geolocator->getAddressFromCoords(12.3, 10.7);
         $this->assertIsObject($result);
@@ -35,7 +35,7 @@ class GeolocatorTest extends TestCase
     }
     public function testGetCoordsFromAddress()
     {
-        $this->geolocator->client->method('request')->with("get", $this->istype('string'), $this->arrayHasDeepKey('address'))->willReturn($this->getCoordsFromAddressResponse());
+        $this->geolocator->client->method('request')->with("get", $this->istype('string'), $this->anything())->willReturn($this->getCoordsFromAddressResponse());
 
         $result = $this->geolocator->getCoordsFromAddress("fakeAddress");
         $this->assertIsObject($result);
