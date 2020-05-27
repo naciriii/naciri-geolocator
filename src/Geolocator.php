@@ -21,15 +21,19 @@ class Geolocator
 
     /**
      * __construct
-     * @param GuzzleHttp\Client $client
+     * @param GuzzleHttp\ClientInterface $client Guzzle client
      */
-    public function __construct(\GuzzleHttp\Client $client)
+    public function __construct(\GuzzleHttp\ClientInterface $client)
     {
         $this->client = $client;
         /** @var string get google api token from config file */
       
         $this->googleApiToken = config("API_TOKEN");
-        
+    }
+
+    public function __get($prop)
+    {
+        return property_exists($this, $prop) ? $this->$prop : null;
     }
 
     /**
@@ -40,7 +44,8 @@ class Geolocator
      */
     public function getAddressFromCoords($lat, $lng)
     {
-        $response = $this->client->get(
+        $response = $this->client->request(
+            'get',
             $this->googleApiUrl,
             [
             "query" => [
@@ -60,7 +65,8 @@ class Geolocator
      */
     public function getCoordsFromAddress($address)
     {
-        $response = $this->client->get(
+        $response = $this->client->request(
+            'get',
             $this->googleApiUrl,
             [
              "query" => [

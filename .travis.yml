@@ -1,11 +1,32 @@
 language: php
+os: linux
+sudo: false
 php:
-  - 7.2
   - 7.3
+stages:
+- install
+- lint
+- test
 cache:
   directories:
     - $HOME/.composer/cache
-install:
-  - composer install --no-interaction --prefer-dist
+    - vendor
+jobs:
+  include:
+    - stage: install
+      script: 
+        - echo 'Installing'
+        - composer install --no-interaction --prefer-dist
+        - echo 'Installing Done !'
 
-script: composer run-test tests
+    - stage: lint
+      script:
+        - echo 'Lint check' 
+        - composer lint-check
+        - echo 'Lint check Done !'
+
+    - stage: test  
+      script: 
+        - echo 'Testing'
+        - composer run-test
+        - echo 'Testing Done !'
