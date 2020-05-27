@@ -31,6 +31,11 @@ class Geolocator
         $this->googleApiToken = config("API_TOKEN");
     }
 
+    public function __get($prop)
+    {
+        return property_exists($this, $prop) ? $this->$prop : null;
+    }
+
     /**
      * getAddressFromCoords returns address from coordinates
      * @param  float $lat
@@ -39,7 +44,8 @@ class Geolocator
      */
     public function getAddressFromCoords($lat, $lng)
     {
-        $response = $this->client->get(
+        $response = $this->client->request(
+            'get',
             $this->googleApiUrl,
             [
             "query" => [
@@ -59,7 +65,8 @@ class Geolocator
      */
     public function getCoordsFromAddress($address)
     {
-        $response = $this->client->get(
+        $response = $this->client->request(
+            'get',
             $this->googleApiUrl,
             [
              "query" => [
