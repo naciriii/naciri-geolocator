@@ -10,6 +10,7 @@ stages:
 cache:
   directories:
     - $HOME/.composer/cache
+    - vendor
 jobs:
   include:
     - stage: install
