@@ -21,15 +21,14 @@ class Geolocator
 
     /**
      * __construct
-     * @param GuzzleHttp\Client $client
+     * @param GuzzleHttp\ClientInterface $client Guzzle client
      */
-    public function __construct(\GuzzleHttp\Client $client)
+    public function __construct(\GuzzleHttp\ClientInterface $client)
     {
         $this->client = $client;
         /** @var string get google api token from config file */
       
         $this->googleApiToken = config("API_TOKEN");
-        
     }
 
     /**
