@@ -1,5 +1,6 @@
 language: php
 os: linux
+sudo: false
 php:
   - 7.3
 stages:
