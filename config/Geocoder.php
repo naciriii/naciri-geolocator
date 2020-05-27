@@ -8,17 +8,16 @@ const CONFIG = [
 
 
 ];
-foreach(CONFIG as $key => $val) {
-	if(getenv($key) == false) {
-	putenv($key.'='.$val);
-	}
+foreach (CONFIG as $key => $val) {
+    if (getenv($key) == false) {
+        putenv($key.'='.$val);
+    }
 }
 
 function config($param = null)
 {
-	if(getenv($param)!= false) {
-		return getenv($param);
-	}
-	return null;
+    if (getenv($param)!= false) {
+        return getenv($param);
+    }
+    return null;
 }
-
