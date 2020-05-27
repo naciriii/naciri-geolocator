@@ -13,18 +13,18 @@ jobs:
   include:
     - stage: install
       script: 
-        - echo 'Installing \n'
+        - echo 'Installing'
         - composer install --no-interaction --prefer-dist
-        - echo 'Installing Done ! \n'
+        - echo 'Installing Done !'
 
     - stage: lint
       script:
-        - echo 'Lint check \n' 
+        - echo 'Lint check' 
         - composer lint-check
-        - echo 'Lint check Done ! \n'
+        - echo 'Lint check Done !'
 
     - stage: test  
       script: 
-        - echo 'Testing \n'
+        - echo 'Testing'
         - composer run-tests
-        - echo 'Testing Done ! \n'
+        - echo 'Testing Done !'
